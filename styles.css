@@ -1,0 +1,71 @@
+h1 {
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    outline: none;
+    text-transform: uppercase;
+}
+
+.cell:focus {
+    border-color: blue;
+}
+
+.cell::selection {
+    background-color: transparent;
+}
+
+#button {
+    text-align: center;
+}
+
+.green {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    outline: none;
+    text-transform: uppercase;
+    background-color: green;
+}
+
+.yellow {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    outline: none;
+    text-transform: uppercase;
+    background-color: yellow;
+}
+
+input[type="text"][disabled]  {
+    color: black;
+}

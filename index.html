@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <title>Wordle Clone</title>
+</head>
+
+<body>
+    <h1>Wordle Clone</h1>
+    <div class="grid-container">
+        <div class="grid" row="1">
+            <input type="text" maxlength="1" class="cell" col="0" onkeyup="autoTab('1', '0', '1', '1')" />
+            <input type="text" maxlength="1" class="cell" col="1" onkeyup="autoTab('1', '1', '2', '1')" />
+            <input type="text" maxlength="1" class="cell" col="2" onkeyup="autoTab('1', '2', '3', '1')" />
+            <input type="text" maxlength="1" class="cell" col="3" onkeyup="autoTab('1', '3', '4', '1')" />
+            <input type="text" maxlength="1" class="cell" col="4" />
+        </div>
+        <div class="grid" row="2">
+            <input type="text" maxlength="1" class="cell" col="0" onkeyup="autoTab('2', '0', '1', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="1" onkeyup="autoTab('2', '1', '2', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="2" onkeyup="autoTab('2', '2', '3', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="3" onkeyup="autoTab('2', '3', '4', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="4" disabled/>
+        </div>
+        <div class="grid" row="3">
+            <input type="text" maxlength="1" class="cell" col="0" onkeyup="autoTab('3', '0', '1', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="1" onkeyup="autoTab('3', '1', '2', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="2" onkeyup="autoTab('3', '2', '3', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="3" onkeyup="autoTab('3', '3', '4', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="4" disabled/>
+        </div>
+        <div class="grid" row="4">
+            <input type="text" maxlength="1" class="cell" col="0" onkeyup="autoTab('4', '0', '1', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="1" onkeyup="autoTab('4', '1', '2', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="2" onkeyup="autoTab('4', '2', '3', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="3" onkeyup="autoTab('4', '3', '4', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="4" disabled/>
+        </div>
+        <div class="grid" row="5">
+            <input type="text" maxlength="1" class="cell" col="0" onkeyup="autoTab('5', '0', '1', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="1" onkeyup="autoTab('5', '1', '2', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="2" onkeyup="autoTab('5', '2', '3', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="3" onkeyup="autoTab('5', '3', '4', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="4" disabled/>
+        </div>
+        <div class="grid" row="6">
+            <input type="text" maxlength="1" class="cell" col="0" onkeyup="autoTab('6', '0', '1', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="1" onkeyup="autoTab('6', '1', '2', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="2" onkeyup="autoTab('6', '2', '3', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="3" onkeyup="autoTab('6', '3', '4', '1')" disabled />
+            <input type="text" maxlength="1" class="cell" col="4" disabled/>
+        </div>
+    </div>
+    <div id="button">
+        <button onclick="resetGame()">Reset Game</button>
+        <button onclick="checkAnswer()">Enter</button>
+    </div>
+    <div id="test"></div>
+    <script src="main.js" type="text/JavaScript"></script>
+</body>
+
+</html>
