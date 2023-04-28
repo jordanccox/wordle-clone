@@ -13,5 +13,5 @@ To test it in its current form:
 5. If you were unable to guess the word, press "Reset Game" to try again.
 
 
-If you want to change the word to guess, open the main.js file and change the value held by the variable `word`. 
+If you want to change the word to guess, open the main.js file and change the value held by the variable `word` at the top of file. 
 
