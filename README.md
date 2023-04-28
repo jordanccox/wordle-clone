@@ -8,7 +8,7 @@ To test it in its current form:
 
 1. Download the files as a zip, open the zip folder, and open the index.html file in your browser.
 2. Try to guess the 5 letter word by entering a word into the first row then pressing the "Enter" button.
-3. If you guess one of the letter's of the word at the correct index, the square behind the correct letter will turn green. If you guess the right letter at an incorrect index, the square behind the letter will turn yellow.
+3. If you guess one of the letters of the word at the correct index, the square behind the correct letter will turn green. If you guess the right letter at an incorrect index, the square behind the letter will turn yellow.
 4. If all squares turn green, you guessed the word correctly.
 5. If you were unable to guess the word, press "Reset Game" to try again.
 
