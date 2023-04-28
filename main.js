@@ -13,25 +13,31 @@ function autoTab(rowNum, origCell, nextCol, inputSize) {
 }
 
 function checkAnswer() {
-    let trialArray = [];
+    const guesses = [];
     let correctGuesses = 0;
-    let row = document.querySelector(`div.grid[row="${currentRow}"]`);
-    let wordArray = word.split("");
+    const row = document.querySelector(`div.grid[row="${currentRow}"]`);
+    const wordArray = word.split("");
 
     for (let i = 0; i < 5; i++) {
-        trialArray.push(row.querySelector(`[col="${i}"]`).value.toUpperCase());
+        guesses.push(row.querySelector(`[col="${i}"]`).value.toUpperCase());
     }
 
-    // Check if trialArray === word 
+    // Check if guesses === word 
 
-    for (let i = 0; i < 5; i++) {
-        if (word[i] == (trialArray[i]) && wordArray.includes(trialArray[i])) {
+    // Iterate over guesses to find correct letter and index
+    for (let i = 0; i < 5; i++) { 
+        if (word[i] == (guesses[i]) && wordArray.includes(guesses[i])) {
             greenGrid(i);
             correctGuesses++;
-            wordArray.splice(wordArray.indexOf(trialArray[i]), 1);
-        } else if (trialArray[i] != word[i] && wordArray.includes(trialArray[i])) {
+            wordArray.splice(wordArray.indexOf(guesses[i]), 1);
+        }
+    }
+
+    // Iterate over guesses again to find remaining correct letters but incorrect indexes
+    for (let i = 0; i < 5; i++) {
+        if (guesses[i] != word[i] && wordArray.includes(guesses[i])) {
             yellowGrid(i);
-            wordArray.splice(wordArray.indexOf(trialArray[i]), 1);
+            wordArray.splice(wordArray.indexOf(guesses[i]), 1);
         }
     }
 
@@ -44,14 +50,14 @@ function checkAnswer() {
         nextRow();
     } else {
         //Print "You lost! Better luck next time"
-        resetGame();
+        //resetGame();
     }
     //document.getElementById("row1").innerHTML = green + " " + yellow;
 }
 
 function nextRow() {
     currentRow++;
-    let row = document.querySelector(`div.grid[row="${currentRow}"]`);
+    const row = document.querySelector(`div.grid[row="${currentRow}"]`);
     let inputs = row.querySelectorAll('input');
     inputs.forEach(input => input.disabled = false);
 }
