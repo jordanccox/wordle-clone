@@ -1,4 +1,12 @@
-const word = "APPLE";
+// Store words to pick from
+const dictionary = ["scale", "happy", "twice", "whose", "mince", "chops", "cheap", "tread", "break", "brake", "heart", "yeast"];
+// Generate random word for each new game
+function randomWord(num, array) {
+    let randomNum = Math.floor(Math.random() * num);
+    return array[randomNum].toUpperCase();
+}
+// Assign randomWord to word variable
+const word = randomWord(dictionary.length, dictionary);
 let currentRow = 1;
 const maxRows = 6;
 
@@ -25,7 +33,7 @@ function checkAnswer() {
     // Check if guesses === word 
 
     // Iterate over guesses to find correct letter and index
-    for (let i = 0; i < 5; i++) { 
+    for (let i = 0; i < 5; i++) {
         if (word[i] == (guesses[i]) && wordArray.includes(guesses[i])) {
             greenGrid(i);
             correctGuesses++;
