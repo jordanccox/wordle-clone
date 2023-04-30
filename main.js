@@ -8,7 +8,6 @@ function randomWord(num, array) {
 }
 // Assign randomWord to word variable
 const word = randomWord(dictionary.length, dictionary);
-console.log(word);
 let currentRow = 1;
 const maxRows = 6;
 
