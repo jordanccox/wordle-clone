@@ -1,4 +1,5 @@
 // Store words to pick from
+
 const dictionary = ["scale", "happy", "twice", "whose", "mince", "chops", "cheap", "tread", "break", "brake", "heart", "yeast"];
 // Generate random word for each new game
 function randomWord(num, array) {
@@ -7,6 +8,7 @@ function randomWord(num, array) {
 }
 // Assign randomWord to word variable
 const word = randomWord(dictionary.length, dictionary);
+console.log(word);
 let currentRow = 1;
 const maxRows = 6;
 
@@ -130,10 +132,15 @@ function yellowGrid(index) {
 
 function gameWon() {
     //Alert box that includes number of tries it took to win and resetGame button
+    const row = document.querySelector(`div.grid[row="${currentRow}"]`);
+    let inputs = row.querySelectorAll('input');
+    inputs.forEach(input => input.disabled = true);
 }
 
 function resetGame() {
-    location.reload();
+    // Add alert box saying you lost
+    // disable inputs
+    location.reload(); // Add 10 second timeout
 }
 /* 
 Create button with keypress = enter to submit line when complete
