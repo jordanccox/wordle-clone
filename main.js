@@ -10,7 +10,7 @@ function randomWord(num, array) {
 const word = randomWord(dictionary.length, dictionary);
 let currentRow = 1;
 const maxRows = 6;
-console.log(word);
+
 // Auto tab to next input grid
 function autoTab(rowNum, origCell, nextCol, inputSize) {
     const row = document.querySelector(`[row="${rowNum}"]`);
