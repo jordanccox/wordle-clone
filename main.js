@@ -10,25 +10,75 @@ const word = randomWord(dictionary.length, dictionary);
 let currentRow = 1;
 const maxRows = 6;
 
+// Auto tab to next input grid
 function autoTab(rowNum, origCell, nextCol, inputSize) {
-    let row = document.querySelector(`[row="${rowNum}"]`);
-    let startCell = row.querySelector(`[col="${origCell}"]`);
-    let nextCell = row.querySelector(`[col="${nextCol}"]`);
+    const row = document.querySelector(`[row="${rowNum}"]`);
+    const startCell = row.querySelector(`[col="${origCell}"]`);
+    const nextCell = row.querySelector(`[col="${nextCol}"]`);
 
     if (startCell.value.length == inputSize) {
         nextCell.focus();
     }
 }
 
-function checkAnswer() {
-    const guesses = [];
-    let correctGuesses = 0;
+// Tab to next row
+//const lastCell = document.querySelectorAll('[col="4"]');
+
+function autoNextRow(rowNum) { //Not working
+    const nextRowNum = rowNum + 1;
+    const nextRow = document.querySelector(`[row="${nextRowNum}"]`);
+    const firstCell = nextRow.querySelector(`[col="0"]`);
+    
+    firstCell.focus();
+    
+}
+
+// Enter button variable
+const enter = document.querySelector("#enterBtn");
+
+// Enter keypress --> checkValidInput()
+document.addEventListener("keypress", (event) => {
+    if (event.keyCode === 13) {
+        checkValidInput();
+    }
+});
+
+// Enter --> checkValidInput()
+enter.addEventListener("click", checkValidInput);
+
+function checkValidInput() {
+    const regex = /[A-Z]{5}/;
+    let guesses = [];
     const row = document.querySelector(`div.grid[row="${currentRow}"]`);
-    const wordArray = word.split("");
 
     for (let i = 0; i < 5; i++) {
         guesses.push(row.querySelector(`[col="${i}"]`).value.toUpperCase());
     }
+
+    guesses = guesses.join("");
+
+    if (regex.test(guesses)) {
+        autoNextRow(currentRow);
+        checkAnswer(guesses);
+    } else {
+        window.alert("Please fill in all the grids (letters only) and try again");
+    }
+
+}
+
+// Auto backspace to previous grid
+/*document.addEventListener("keyup", (event) => {
+    if (event.keyCode === 8) {
+        // autoBackspace function
+    }
+});*/
+
+// If input pattern is only letters, check if the input matches the word
+function checkAnswer(guesses) {
+    // ADD: autoTab to next row...
+    let correctGuesses = 0;
+    const row = document.querySelector(`div.grid[row="${currentRow}"]`);
+    const wordArray = word.split("");
 
     // Check if guesses === word 
 
