@@ -10,7 +10,7 @@ function randomWord(num, array) {
 const word = randomWord(dictionary.length, dictionary);
 let currentRow = 1;
 const maxRows = 6;
-
+console.log(word);
 // Auto tab to next input grid
 function autoTab(rowNum, origCell, nextCol, inputSize) {
     const row = document.querySelector(`[row="${rowNum}"]`);
@@ -26,8 +26,15 @@ function autoTab(rowNum, origCell, nextCol, inputSize) {
 function autoNextRow(rowNum) {
     const nextRow = document.querySelector(`[row="${rowNum}"]`);
     const firstCell = nextRow.querySelector(`[col="0"]`);
-    
+
     firstCell.focus();
+}
+
+// Toggle input attribute disabled
+function toggleDisabled() {
+    const row = document.querySelector(`div.grid[row="${currentRow}"]`);
+    let inputs = row.querySelectorAll('input');
+    inputs.forEach(input => input.toggleAttribute("disabled"));
 }
 
 // Enter button variable
@@ -63,15 +70,22 @@ function checkValidInput() {
 }
 
 // Auto backspace to previous grid
-/*document.addEventListener("keyup", (event) => {
+document.addEventListener("keyup", (event) => {
     if (event.keyCode === 8) {
-        // autoBackspace function
+        const row = document.querySelector(`div.grid[row="${currentRow}"]`);
+        const currentCell = document.activeElement;
+
+        if (currentCell.dataset.col > 0) {
+            const prevCellNum = currentCell.dataset.col - 1;
+            const prevCell = row.querySelector(`[col="${prevCellNum}"]`);
+            
+            prevCell.focus();
+        }
     }
-});*/
+});
 
 // If input pattern is only letters, check if the input matches the word
 function checkAnswer(guesses) {
-    // ADD: autoTab to next row...
     let correctGuesses = 0;
     const row = document.querySelector(`div.grid[row="${currentRow}"]`);
     const wordArray = word.split("");
@@ -99,8 +113,7 @@ function checkAnswer(guesses) {
         gameWon();
     } else if (correctGuesses != 5 && currentRow < maxRows) {
         // disable current row and go to next row
-        let inputs = row.querySelectorAll('input');
-        inputs.forEach(input => input.disabled = true);
+        toggleDisabled();
         nextRow();
         autoNextRow(currentRow);
     } else {
@@ -112,9 +125,7 @@ function checkAnswer(guesses) {
 
 function nextRow() {
     currentRow++;
-    const row = document.querySelector(`div.grid[row="${currentRow}"]`);
-    let inputs = row.querySelectorAll('input');
-    inputs.forEach(input => input.disabled = false);
+    toggleDisabled();
 }
 
 function greenGrid(index) {
@@ -131,9 +142,7 @@ function yellowGrid(index) {
 
 function gameWon() {
     //Alert box that includes number of tries it took to win and resetGame button
-    const row = document.querySelector(`div.grid[row="${currentRow}"]`);
-    let inputs = row.querySelectorAll('input');
-    inputs.forEach(input => input.disabled = true);
+    toggleDisabled();
 }
 
 function resetGame() {
