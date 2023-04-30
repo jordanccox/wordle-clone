@@ -22,15 +22,11 @@ function autoTab(rowNum, origCell, nextCol, inputSize) {
 }
 
 // Tab to next row
-//const lastCell = document.querySelectorAll('[col="4"]');
-
-function autoNextRow(rowNum) { //Not working
-    const nextRowNum = rowNum + 1;
-    const nextRow = document.querySelector(`[row="${nextRowNum}"]`);
+function autoNextRow(rowNum) {
+    const nextRow = document.querySelector(`[row="${rowNum}"]`);
     const firstCell = nextRow.querySelector(`[col="0"]`);
     
     firstCell.focus();
-    
 }
 
 // Enter button variable
@@ -58,7 +54,6 @@ function checkValidInput() {
     guesses = guesses.join("");
 
     if (regex.test(guesses)) {
-        autoNextRow(currentRow);
         checkAnswer(guesses);
     } else {
         window.alert("Please fill in all the grids (letters only) and try again");
@@ -106,6 +101,7 @@ function checkAnswer(guesses) {
         let inputs = row.querySelectorAll('input');
         inputs.forEach(input => input.disabled = true);
         nextRow();
+        autoNextRow(currentRow);
     } else {
         //Print "You lost! Better luck next time"
         //resetGame();
